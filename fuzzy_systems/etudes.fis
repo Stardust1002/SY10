@@ -1,0 +1,51 @@
+[System]
+Name='model_ter'
+Type='mamdani'
+Version=2.0
+NumInputs=2
+NumOutputs=1
+NumRules=12
+AndMethod='min'
+OrMethod='max'
+ImpMethod='min'
+AggMethod='max'
+DefuzzMethod='centroid'
+
+[Input1]
+Name='etudes'
+Range=[0 8]
+NumMFs=4
+MF1='courtes':'trimf',[0 2 4]
+MF2='moyennes':'trimf',[2 4 6]
+MF3='grandes':'trapmf',[4 6 8 10]
+MF4='aucune':'trimf',[-2 0 2]
+
+[Input2]
+Name='stages'
+Range=[0 18]
+NumMFs=3
+MF1='peu':'trimf',[-9 0 9]
+MF2='moyen':'trimf',[0 9 18]
+MF3='beaucoup':'trimf',[9 18 27]
+
+[Output1]
+Name='output1'
+Range=[0 10]
+NumMFs=3
+MF1='courte':'trimf',[-5 0 5]
+MF2='médiane':'trimf',[0 5 10]
+MF3='longue':'trimf',[5 10 15]
+
+[Rules]
+1 1, 1 (1) : 1
+4 1, 1 (1) : 1
+2 1, 2 (1) : 1
+3 1, 3 (1) : 1
+4 2, 1 (1) : 1
+1 2, 2 (1) : 1
+2 2, 2 (1) : 1
+3 2, 3 (1) : 1
+4 3, 2 (1) : 1
+1 3, 2 (1) : 1
+2 3, 3 (1) : 1
+3 3, 3 (1) : 1

@@ -1,0 +1,56 @@
+[System]
+Name='horaires'
+Type='mamdani'
+Version=2.0
+NumInputs=2
+NumOutputs=1
+NumRules=16
+AndMethod='min'
+OrMethod='max'
+ImpMethod='min'
+AggMethod='max'
+DefuzzMethod='centroid'
+
+[Input1]
+Name='tauxTravailNocturne'
+Range=[0 1]
+NumMFs=4
+MF1='aucun':'trimf',[0 0 0.15]
+MF2='faible':'trimf',[0 0.15 0.3]
+MF3='important':'trimf',[0.15 0.3 0.45]
+MF4='tresEleve':'trapmf',[0.3 0.45 1 1.2]
+
+[Input2]
+Name='tauxDepassementJournalier'
+Range=[0 1]
+NumMFs=4
+MF1='aucun':'trimf',[0 0 0.15]
+MF2='peuFrequent':'trimf',[0 0.15 0.3]
+MF3='regulier':'trimf',[0.15 0.3 0.45]
+MF4='tresRegulier':'trapmf',[0.3 0.45 1 1.2]
+
+[Output1]
+Name='output1'
+Range=[0 10]
+NumMFs=3
+MF1='bas':'trimf',[-5 0 5]
+MF2='moyen':'trimf',[0 5 10]
+MF3='fort':'trapmf',[5 10 10 15]
+
+[Rules]
+1 1, 1 (1) : 1
+2 1, 1 (1) : 1
+3 1, 2 (1) : 1
+4 1, 3 (1) : 1
+1 2, 1 (1) : 1
+2 2, 2 (1) : 1
+3 2, 2 (1) : 1
+4 2, 3 (1) : 1
+1 3, 2 (1) : 1
+2 3, 2 (1) : 1
+3 3, 3 (1) : 1
+4 3, 3 (1) : 1
+1 4, 3 (1) : 1
+2 4, 3 (1) : 1
+3 4, 3 (1) : 1
+4 4, 3 (1) : 1

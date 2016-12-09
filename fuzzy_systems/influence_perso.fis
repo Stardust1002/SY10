@@ -1,0 +1,53 @@
+[System]
+Name='influenceperso'
+Type='mamdani'
+Version=2.0
+NumInputs=2
+NumOutputs=1
+NumRules=12
+AndMethod='min'
+OrMethod='max'
+ImpMethod='min'
+AggMethod='max'
+DefuzzMethod='centroid'
+
+[Input1]
+Name='handicap'
+Range=[0 10]
+NumMFs=4
+MF1='Faible':'trimf',[-2.5 0 2.5]
+MF2='Moyen':'trimf',[0 2.5 5]
+MF3='Important':'trimf',[2.5 5 8]
+MF4='Grave':'trapmf',[5 8 11 14]
+
+[Input2]
+Name='situationperso'
+Range=[0 10]
+NumMFs=3
+MF1='faible':'trimf',[-5 0 5]
+MF2='mod??r??e':'trimf',[0 5 10]
+MF3='fort':'trimf',[5 10 15]
+
+[Output1]
+Name='output1'
+Range=[0 10]
+NumMFs=5
+MF1='basse':'trimf',[-5 0 2.5]
+MF2='basse+':'trimf',[0 2.5 5]
+MF3='forte':'trimf',[7.5 10 12.5]
+MF4='moyenne':'trimf',[2.5 5 7.5]
+MF5='forte-':'trimf',[5 7.5 10]
+
+[Rules]
+1 1, 1 (1) : 1
+2 1, 2 (1) : 1
+3 1, 5 (1) : 1
+4 1, 3 (1) : 1
+1 2, 2 (1) : 1
+2 2, 4 (1) : 1
+3 2, 5 (1) : 1
+4 2, 3 (1) : 1
+1 3, 4 (1) : 1
+2 3, 5 (1) : 1
+3 3, 3 (1) : 1
+4 3, 3 (1) : 1
